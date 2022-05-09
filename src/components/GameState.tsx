@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type Value = "X" | "0" | null;
+export type Value = "X" | "O" | null;
 
 export type BoardState = Value[];
 const createBoardState = () => Array<Value>(9).fill(null);
@@ -40,4 +40,32 @@ export function useGameState() {
     history: [createBoardState()],
     step: 0,
   });
+
+  const current = gameState.history[gameState.step];
+  const xIsNext = gameState.step % 2 === 0;
+  const winner = calculateWinner(current);
+
+  function handleClick(square: number) {
+    const history = gameState.history.slice(0, gameState.step + 1);
+    const boardState = history[history.length - 1];
+    if (calculateWinner(boardState) || boardState[square]) {
+      return;
+    }
+
+    const newBoardState = boardState.slice();
+    newBoardState[square] = gameState.step % 2 === 0 ? "X" : "O";
+    history.push(newBoardState);
+
+    setGameState({
+      history: history,
+      step: history.length - 1,
+    });
+  }
+
+  return {
+    gameState,
+    current,
+    xIsNext,
+    winner,
+  };
 }
