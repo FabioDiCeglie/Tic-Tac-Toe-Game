@@ -9,15 +9,17 @@ function Game() {
     useGameState();
 
   return (
-    <Row gap={20}>
-      <Column gap={20}>
-        <div>
-          {winner ? `Winner ${winner}` : `Next Player ${xIsNext ? "X" : "O"}`}
-        </div>
-        <Board board={current} onClick={handleClick} />
-      </Column>
-      <Log history={gameState.history} jumpTo={jumpTo} />
-    </Row>
+    <div style={{ marginTop: 20 }}>
+      <Row gap={20}>
+        <Column gap={20}>
+          <div>
+            {winner ? `Winner ${winner}` : `Next Player ${xIsNext ? "X" : "O"}`}
+          </div>
+          <Board board={current} onClick={handleClick} />
+        </Column>
+        <Log history={gameState.history} jumpTo={jumpTo} />
+      </Row>
+    </div>
   );
 }
 

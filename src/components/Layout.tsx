@@ -7,6 +7,7 @@ type LayoutProps = {
 export const Row = styled.div<LayoutProps>`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: ${(props) => props.gap}px;
 `;
 
