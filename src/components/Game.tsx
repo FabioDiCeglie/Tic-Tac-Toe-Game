@@ -30,7 +30,39 @@ function Game() {
 }
 
 function Board() {
-  return <div>Board</div>;
+  return (
+    <Column gap={0}>
+      <Row gap={0}>
+        <Square />
+        <Square />
+        <Square />
+      </Row>
+      <Row gap={0}>
+        <Square />
+        <Square />
+        <Square />
+      </Row>
+      <Row gap={0}>
+        <Square />
+        <Square />
+        <Square />
+      </Row>
+    </Column>
+  );
+}
+
+const StyledSquare = styled.button`
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border: 1px solid #999;
+  padding: 0;
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+function Square() {
+  return <StyledSquare>X</StyledSquare>;
 }
 
 function Log() {
