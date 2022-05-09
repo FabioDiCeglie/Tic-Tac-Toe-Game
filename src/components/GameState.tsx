@@ -62,10 +62,19 @@ export function useGameState() {
     });
   }
 
+  function jumpTo(step: number) {
+    setGameState({
+      history: gameState.history,
+      step,
+    });
+  }
+
   return {
     gameState,
     current,
     xIsNext,
     winner,
+    handleClick,
+    jumpTo,
   };
 }
